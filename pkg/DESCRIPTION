@@ -20,6 +20,6 @@ Imports:
     sandwich,
     numDeriv,
     randtoolbox,
-    parallel,
-	rgenoud
+    parallel
+Suggest: rgenoud
 RoxygenNote: 6.0.1
