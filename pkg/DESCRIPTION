@@ -1,0 +1,25 @@
+Package: cmcRcode
+Type: Package
+Title: Tools for estimating Discrete Choice models
+Version: 2.0.4
+Author: Stephane Hess, David Palma, Thijs Dekker
+Maintainer: Stephane Hess <S.Hess@its.leeds.ac.uk>
+Description: The Choice Modelling Centre (CMC) at the University
+    of Leeds has developed flexible estimation code for choice
+    models in R. The code uses the complete opposite of a
+    black-box approach, i.e. the user sees every step in the
+    coding of a log-likelihood function. We believe this to be
+    essential in ensuring a greater understanding by users of
+    the very powerful models they have at their disposal.
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
+Depends: R (>= 3.0.0)
+Imports:
+    maxLik,
+    sandwich,
+    numDeriv,
+    randtoolbox,
+    parallel,
+	rgenoud
+RoxygenNote: 6.0.1
