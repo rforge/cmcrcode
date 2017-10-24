@@ -28,6 +28,8 @@ cmc_modeloutput=function(model)
   if(cmc_control$includetrat1==1) output=t(rbind(est,se,trat_0,trat_1,robse,robtrat_0,robtrat_1))
   if(cmc_control$includetrat1==0) output=t(rbind(est,se,trat_0,robse,robtrat_0))
   
+  output_table <<- output
+  
   varcovoutput    <<- varcov
   robvarcovoutput <<- robvarcov
   
@@ -42,7 +44,11 @@ cmc_modeloutput=function(model)
   cat("Model diagnosis:",model$message,"\n\n")
   
   cat("Number of decision makers:",N,"\n")
-  cat("Number of observations:",choicetasks,"\n\n")
+  cat("Number of observations:",choicetasks,"\n")
+  if(cmc_control$mixing==1){
+    cat("Number of inter-person draws: ",cmc_inter_draws$nDraws,' (',cmc_inter_draws$drawsType,')',"\n",sep='')
+    cat("Number of intra-person draws: ",cmc_intra_draws$nDraws,' (',cmc_intra_draws$drawsType,')',"\n\n",sep='')
+  } else cat("Model with no mixing\n\n")
   
   if(exists('LL0')) if(LL0<0) cat("LL(0): ",LL0,"\n")
   cat("LL(final): ",finalLL,"\n")
@@ -64,7 +70,7 @@ cmc_modeloutput=function(model)
                      tmpS,sep=':')
   
   cat("Time taken: ",timeTaken,"\n")
-  cat("Iterations: ",readNIter(),"\n\n")
+  cat("Iterations: ",nIterations,"\n\n")
 
   if (cmc_control$replace0==1){
     cat("Replacement of zeros used in covariance calculation, affecting ",count0covar," individuals\n\n")
@@ -117,6 +123,4 @@ cmc_modeloutput=function(model)
   colnames(x)[1]="initial"
   colnames(x)[3]="diff"
   print(x)
-  
-  return(output)
 }

@@ -4,7 +4,8 @@
 #' @return Nothing.
 writeBeta <- function(beta,ll){
   
-  if(exists('writeBetaToFile') & cmc_control$writeIterations>0)if(writeBetaToFile){
+  #if(exists('writeBetaToFile') & cmc_control$writeIterations>0)if(writeBetaToFile){
+  if(cmc_control$writeIterations>0){
 	  fileName <- paste(cmc_control$modelname,'iterations.csv',sep='_')
 	  
 	  if(exists('lastFuncParam') & file.exists(fileName)){
