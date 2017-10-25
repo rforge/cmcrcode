@@ -37,7 +37,7 @@ cmc_prepareData <- function(idColName, choiceColName, alternatives, availColName
   # calculate LL(0) and store in .GlobalEnv
   if(is.matrix(avail_matrix)){
     LL0 <<- sum(log(1/rowSums(avail_matrix)))
-  } else LL0 <<- sum(nrow(data)*log(1/nAlts))
+  } else LL0 <<- sum(nrow(database)*log(1/nAlts))
   
   
   # calculate LL(C) and store in .GlobalEnv
