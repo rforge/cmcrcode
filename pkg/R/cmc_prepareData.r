@@ -22,7 +22,7 @@ cmc_prepareData <- function(idColName, choiceColName, alternatives, availColName
   }
   
   # Create availability matrix
-  if(is.na(availColName)){ # creates availability matrix and store in .GlobalEnv
+  if(anyNA(availColName)){ # creates availability matrix and store in .GlobalEnv
     avail_matrix <<- 1 # availability of all alternatives equal to 1
   } else {
     avail_matrix <<- as.matrix(database[,availColName])
