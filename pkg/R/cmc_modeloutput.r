@@ -47,7 +47,12 @@ cmc_modeloutput=function(model)
   cat("Number of observations:",choicetasks,"\n")
   if(cmc_control$mixing==1){
     cat("Number of inter-person draws: ",cmc_inter_draws$nDraws,' (',cmc_inter_draws$drawsType,')',"\n",sep='')
-    cat("Number of intra-person draws: ",cmc_intra_draws$nDraws,' (',cmc_intra_draws$drawsType,')',"\n\n",sep='')
+    cat("Number of intra-person draws: ",cmc_intra_draws$nDraws,' (',cmc_intra_draws$drawsType,')',"\n",sep='')
+    if(cmc_control$panel==0 & cmc_control$mixing==1)if(cmc_inter_draws$nDraws>0){
+      cat("WARNING: Inter-person draws were used\n")
+      cat("         without a panel structure.\n")
+    }
+    cat('\n')
   } else cat("Model with no mixing\n\n")
   
   if(exists('LL0')) if(LL0<0) cat("LL(0)     : ",LL0,"\n")

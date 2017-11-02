@@ -39,6 +39,14 @@ cmc_makeDraws=function(cmc_inter_draws, cmc_intra_draws){
   # Create list of draws
   drawsList <- list()
   cat('Creating draws ')
+  if(cmc_inter_draws$nDraws>0 & cmc_intra_draws$nDraws>0 &
+     cmc_inter_draws$drawsType=='halton' & cmc_intra_draws$drawsType=='halton'){
+    cmc_intra_draws$drawsType=='mlhs'
+    cat('WARNING: Type of intra-person draws has been changed to "mlhs".\n')
+    cat('         Using halton draws in both inter and intra draws can\n')
+    cat('         introduce unwanted correlation.\n')
+    warning("Intra-person draws' type changed to MLHS.", call.=FALSE)
+  }
   
   # GENERATING INTER DRAWS
   if(nDimInter>0){
@@ -97,10 +105,9 @@ cmc_makeDraws=function(cmc_inter_draws, cmc_intra_draws){
   # RETURN
   cat(' Done\n')
   if(cmc_control$panel==0 & cmc_inter_draws$nDraws>0){
-	warning('Inter-person draws are usually used with panel models.\n
-			 Please make sure parameters in cmc_control, cmc_inter_draws\n
-			 and cmc_intra_draws are correctly specified.',
-			 call.=FALSE)
+    cat("WARNING: Inter-person draws are usually used for panel\n")
+    cat("         data, yet cmc_control$panel is set to 0.\n\n")
+    warning('Inter-person draws are used without a panel structure.', call.=FALSE)
   }
   return(drawsList)
 }

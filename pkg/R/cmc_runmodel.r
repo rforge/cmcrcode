@@ -68,6 +68,11 @@ cmc_runmodel=function()
  # Main estimation
  cat("\n\n")
  cat("Starting main estimation\n")
+ if(cmc_control$panel==0 & cmc_control$mixing==1)if(cmc_inter_draws$nDraws>0){
+   cat("WARNING: Inter-person draws are usually used for panel\n")
+   cat("         data, yet cmc_control$panel is set to 0.\n\n")
+   warning('Inter-person draws are used without a panel structure.', call.=FALSE)
+ }
  initial<<-round(theta_start,4)
  nIterations <<- 0
  if(cmc_control$bhhh==1){
