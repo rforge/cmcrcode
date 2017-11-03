@@ -15,10 +15,11 @@ cmc_prepareData <- function(idColName, choiceColName, alternatives, availColName
   nAlts <- length(alternatives)
   choice <- matrix(0, nrow=nrow(database), ncol=nAlts) # creates choice matrix
   if(cmc_control$mdcev==0){
-	for(i in 1:nAlts) choice[which(database[,choiceColName]==alternatives[i]),i] <- 1
-	choice_matrix <<- matrix(choice>0, nrow=nrow(choice), ncol=ncol(choice))
+    for(i in 1:nAlts) choice[which(database[,choiceColName]==alternatives[i]),i] <- 1
+    choice_matrix <<- matrix(choice>0, nrow=nrow(choice), ncol=ncol(choice))
   } else {
-	for(i in 1:nAlts) choice[,i] <- database[,alternatives[i]]
+    for(i in 1:nAlts) choice[,i] <- database[,alternatives[i]]
+    choice_matrix <<- choice
   }
   
   # Create availability matrix
