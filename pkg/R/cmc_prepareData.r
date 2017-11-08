@@ -1,7 +1,7 @@
 #' Orders data by respondent and prepares a data set to be used in model estimation
 #' @param  idColName String indicating the name of the column containing respondents' ID.
 #' @param  choiceColName String indicating the name of the column containing respondents' choice (level coded).
-#' @param  alternatives Vector containing the codes (labels) used to register choices in the database, e.g.:c(1,2,3) or c('bus','train','plane'). If mdcev==1, then it must contain the column name of consumptions.
+#' @param  alternatives Vector containing the codes (labels) used to register choices in the database, e.g.:c(1,2,3) or c('bus','train','plane'). If mdcev==1, then String vector containing the column name of consumptions.
 #' @param  availColName String indicating the name of the columns containing respondents' availability. The order must be the same than in the choice coding. If ommited, full availability is assumed.
 #' @return Nothing. Data is loaded as a global variable.
 #' @export
@@ -19,7 +19,10 @@ cmc_prepareData <- function(idColName, choiceColName, alternatives, availColName
     choice_matrix <<- matrix(choice>0, nrow=nrow(choice), ncol=ncol(choice))
   } else {
     for(i in 1:nAlts) choice[,i] <- database[,alternatives[i]]
+    colnames(choice) <- alternatives
     choice_matrix <<- choice
+    M_matrix <<- matrix(choice>0, nrow=nrow(choice), ncol=ncol(choice))
+    M <<- rowSums(M_matrix)
   }
   
   # Create availability matrix

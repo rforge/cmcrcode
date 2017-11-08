@@ -39,7 +39,7 @@ writeF12 <- function(){
                   sprintf("%20.12E", LL1), sprintf("%20.12E", LL0),
                   sprintf("%20.12E", model$maximum), '\n', sep='')
   
-  lineK6 <- paste(format(readNIter(), width=4), '   0',
+  lineK6 <- paste(format(nIterations, width=4), '   0',
                   format(Sys.time(),"%H:%M:%S"), ' on ', format(Sys.time(),"%d %b %y"),
                   '\n', sep='')
   
