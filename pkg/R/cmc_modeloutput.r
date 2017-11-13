@@ -111,7 +111,7 @@ cmc_modeloutput=function(model)
     if(cmc_control$mixing==1) nDraws <- dim(drawsL[[1]])[2]
     probs <- cmc_probabilities(est)
     
-    if(cmc_control$mixing==0) P_per_task=probs^nObsPerIndiv
+    if(cmc_control$mixing==0) P_per_task=probs^(1/nObsPerIndiv)
     if(cmc_control$mixing==1 & cmc_control$hybrid==1) P_per_task=exp(LLchoice)^(1/nObsPerIndiv*nDraws)
     if(cmc_control$mixing==1 & cmc_control$hybrid==0) P_per_task=probs^(1/nObsPerIndiv*nDraws)
     
