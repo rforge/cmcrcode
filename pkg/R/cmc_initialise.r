@@ -1,19 +1,10 @@
-#' Set seed, loads packages and detach variables
+#' Set seed, detach variables, makes sure that output is directed to console
 #' @return Nothing
 #' @export
 cmc_initialise <- function()
 {
 # set version and seed
 set.seed(1)
-
-# load functions
-#require(maxLik)
-#require(sandwich)
-#require(numDeriv)
-#require(randtoolbox)
-#require(parallel)
-#require(matrixStats)
-#require(rgenoud)
 
 # Detach everything that is not a package, tools, Autoloads or a couple more
 doDetach <- !grepl("^(.GlobalEnv|package:|tools:|Autoloads|CheckExEnv|TempEnv)", search())

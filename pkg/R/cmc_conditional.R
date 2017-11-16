@@ -1,3 +1,9 @@
+#' Calculates conditionals (individual level parameters) for a mixed model
+#' @param betaD Array. Contains all draws of a random parameter.
+#' @param P Array. Contains probability for each draw
+#' @param isIntra Boolean. Indicates if the parameter is observation specific or not
+#' @return Vector with the posterior value of the parameter for each individual or observation
+#' @export
 cmc_conditional <- function(betaD, P, isIntra=FALSE){
   if(cmc_control$mixing==0){
     cat('Conditionals can only be calculated for mixing models')

@@ -34,8 +34,8 @@ cmc_makeDraws=function(cmc_inter_draws, cmc_intra_draws){
   cmc_inter_draws$drawsType <- tolower(cmc_inter_draws$drawsType)
   cmc_intra_draws$drawsType <- tolower(cmc_intra_draws$drawsType)
   # Set nDraws=1 if inter or intra draws are set to 0
-  if(nDrawsInter==0) nDrawsInter <- 1
-  if(nDrawsIntra==0) nDrawsIntra <- 1
+  if(nDrawsInter==0 | nDimInter==0) nDrawsInter <- 1
+  if(nDrawsIntra==0 | nDimIntra==0) nDrawsIntra <- 1
   # Create list of draws
   drawsList <- list()
   cat('Creating draws ')
