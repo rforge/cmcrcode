@@ -16,8 +16,8 @@ cmc_runmodel=function()
  starttime <<- Sys.time()
  startCountIter <- function(){
    nIterations <- 0
-   f <- function(theta){
-     if(exists('lastFuncParam')) if(prod(lastFuncParam==theta)==1) nIterations <<- nIterations+1
+   f <- function(theta=NA){
+     if(!anyNA(theta) & exists('lastFuncParam')) if(!anyNA(lastFuncParam)) if(all(lastFuncParam==theta)) nIterations <<- nIterations+1
      return(nIterations)
    }
    return(f)
@@ -81,7 +81,7 @@ cmc_runmodel=function()
  } else {
    model<<-maxLik::maxLik(cmc_loglike, start=theta_start, fixed=fixedparams,
                           method="bfgs", print.level=3, finalHessian=FALSE)
-   if(exists('lastFuncParam')) nIterations <<- countIter(lastFuncParam+1) #stores nIter
+   if(exists('lastFuncParam')) nIterations <<- countIter() #stores nIter
  }
  
  

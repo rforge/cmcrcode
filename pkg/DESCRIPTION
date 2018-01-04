@@ -15,11 +15,13 @@ License: GPL-2
 Encoding: UTF-8
 LazyData: true
 Depends: R (>= 3.0.0)
-Imports:
-    maxLik,
-    sandwich,
-    numDeriv,
-    randtoolbox,
-    parallel
+Imports: maxLik, sandwich, numDeriv, randtoolbox, parallel
 Suggest: rgenoud
 RoxygenNote: 6.0.1
+Repository: R-Forge
+Repository/R-Forge/Project: cmcrcode
+Repository/R-Forge/Revision: 13
+Repository/R-Forge/DateTimeStamp: 2017-11-16 15:19:31
+Date/Publication: 2017-11-16 15:19:31
+NeedsCompilation: no
+Packaged: 2017-11-16 15:25:12 UTC; rforge
