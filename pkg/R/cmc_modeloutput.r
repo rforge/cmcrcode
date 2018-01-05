@@ -112,8 +112,8 @@ cmc_modeloutput=function(model)
     probs <- cmc_probabilities(est)
     
     if(cmc_control$mixing==0) P_per_task=probs^(1/nObsPerIndiv)
-    if(cmc_control$mixing==1 & cmc_control$hybrid==1) P_per_task=exp(LLchoice)^(1/nObsPerIndiv*nDraws)
-    if(cmc_control$mixing==1 & cmc_control$hybrid==0) P_per_task=probs^(1/nObsPerIndiv*nDraws)
+    if(cmc_control$mixing==1 & cmc_control$hybrid==1) P_per_task=exp(LLchoice)^(1/nObsPerIndiv)#*nDraws)
+    if(cmc_control$mixing==1 & cmc_control$hybrid==0) P_per_task=probs^(1/nObsPerIndiv)#*nDraws)
     
     outliers=cbind(unique(database$ID),P_per_task)
     colnames(outliers)=c("ID","Av prob per choice")
